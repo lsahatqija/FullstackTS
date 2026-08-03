@@ -1,0 +1,33 @@
+{
+  "name": "fullstack-ts-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable full-stack TypeScript template (Express 5 API + Next.js App Router frontend + PostgreSQL).",
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.7.0",
+  "scripts": {
+    "postinstall": "pnpm --filter @template/contracts run build",
+    "dev": "pnpm --parallel --filter @template/contracts --filter ./apps/* run dev",
+    "dev:api": "pnpm --filter @template/api run dev",
+    "dev:web": "pnpm --filter @template/web run dev",
+    "build": "pnpm --recursive run build",
+    "typecheck": "pnpm --recursive run typecheck",
+    "lint": "pnpm --recursive run lint",
+    "lint:fix": "pnpm --recursive run lint:fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "docker:up": "docker compose -f compose.yml up -d",
+    "docker:down": "docker compose -f compose.yml down",
+    "docker:logs": "docker compose -f compose.yml logs -f",
+    "db:migrate": "pnpm --filter @template/api run db:migrate",
+    "db:seed": "pnpm --filter @template/api run db:seed",
+    "clean": "pnpm --recursive run clean"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  }
+}
